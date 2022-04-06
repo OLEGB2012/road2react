@@ -1,0 +1,30 @@
+Проект hacker-stories по книге The Road to React by Robin Wieruch (https://www.roadtoreact.com/)
+
+0) Создание проекта:
+ > npx create-react-app 00.road2react --use-npm &&
+   cd 00.road2react &&
+   npm start
+
+1) Приводим scr/App.js к виду "Hello World".
+function App() {
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
+}
+
+export default App;
+
+2) Фиксим изменения
+ > git add .
+ > git commit -am "Initial setup"
+
+3) Создать репозиторий в личном Github-аккаунте:
+ > https://github.com/OLEGB2012/road2react.git
+
+4) Связь локальный и удаленный репы:
+ > git remote add origin https://github.com/OLEGB2012/road2react.git
+
+5) Публикуем начальный коммит:
+ > git push -u origin master
