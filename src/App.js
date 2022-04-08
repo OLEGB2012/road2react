@@ -1,14 +1,5 @@
 import React from 'react';
 
-const welcome = {
-  greeting: 'Hey',
-  title: 'React',
-};
-
-function getProjectName(name) {
-  return name;
-}
-
 const App = () => {
   const stories = [
     {
@@ -29,26 +20,37 @@ const App = () => {
     },
   ]
 
+  const handleSearch = event => {
+    console.log(event.target.value);
+  }
+
+  return (
+    <div>
+      <h1>My Hacker Stories</h1>
+      <Search onSearch={handleSearch}/>
+
+      <hr/>
+      <List list={stories}/>
+    </div>
+  );
+}
+
+const Search = props => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
+    props.onSearch(event);
   };
 
   return (
     <div>
-      <h1>{welcome.greeting} {welcome.title}</h1>
-      <h2>{getProjectName('Hacker Stories')}</h2>
-
       <label htmlFor="search">Search:</label>
       <input id='search' type="text" onChange={handleChange}/>
 
       <p>
         Searching for <strong>{searchTerm}</strong>.
       </p>
-
-      <hr/>
-      <List list={stories}/>
     </div>
   );
 }
