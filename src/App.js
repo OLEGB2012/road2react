@@ -1,6 +1,7 @@
 import React from 'react';
 // > npm install axios
 import axios from "axios";
+import './App.css';
 
 const storiesReducer = (state, action) => {
   switch (action.type) {
@@ -91,8 +92,8 @@ const App = () => {
     };
 
     return (
-      <div>
-        <h1>My Hacker Stories</h1>
+      <div className="container">
+        <h1 className="headline-primary">My Hacker Stories</h1>
 
         <SearchForm
           searchTerm={searchTerm}
@@ -100,7 +101,6 @@ const App = () => {
           onSearchSubmit={handleSearchSubmit}
         />
 
-        <hr/>
         {stories.isError && <p>Something went wrong ... </p>}
         {stories.isLoading ? (
           <p>Loading ...</p>
@@ -118,7 +118,7 @@ const SearchForm = ({
                       onSearchInput,
                       onSearchSubmit,
                     }) => (
-  <form onSubmit={onSearchSubmit}>
+  <form onSubmit={onSearchSubmit} className="search-form">
     <InputWithLabel
       id="search"
       value={searchTerm}
@@ -128,7 +128,7 @@ const SearchForm = ({
       <strong>Search:</strong>
     </InputWithLabel>
 
-    <button type="submit" disabled={!searchTerm}>
+    <button type="submit" disabled={!searchTerm} className="button button_large">
       Submit
     </button>
   </form>
@@ -152,7 +152,9 @@ const InputWithLabel = ({
 
   return (
     <>
-      <label htmlFor={id}>{children}</label>
+      <label htmlFor={id} className="label">
+        {children}
+      </label>
       &nbsp;
       <input
         ref={inputRef}
@@ -161,6 +163,7 @@ const InputWithLabel = ({
         value={value}
         autoFocus={isFocused}
         onChange={onInputChange}
+        className="input"
       />
     </>
   );
@@ -174,25 +177,19 @@ const List = ({list, onRemoveItem}) =>
     />
   ))
 
-const Item = ({item, onRemoveItem}) => {
-  const handleRemoveItem = () => {
-    onRemoveItem(item);
-  }
-
-  return (
-    <div>
-      <span>
+const Item = ({item, onRemoveItem}) => (
+  <div className="item">
+      <span style={{width: '40%'}}>
         <a href={item.url}>{item.title}</a>
       </span>
-      <span>{item.author}</span>
-      <span>{item.num_comments}</span>
-      <span>{item.points}</span>
-      <span>
-        <button type="button" onClick={handleRemoveItem}>
+    <span style={{width: '30%'}}>{item.author}</span>
+    <span style={{width: '10%'}}>{item.num_comments}</span>
+    <span style={{width: '10%'}}>{item.points}</span>
+    <span style={{width: '10%'}}>
+        <button type="button" onClick={() => onRemoveItem(item)} className="button button_small">
           Dismiss
         </button>
       </span>
-    </div>
-  )
-};
+  </div>
+);
 export default App;
