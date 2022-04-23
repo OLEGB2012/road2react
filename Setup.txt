@@ -28,3 +28,32 @@ export default App;
 
 5) Публикуем начальный коммит:
  > git push -u origin master
+
+6) Перевод существующего проекта на TypeScript (см. пример перехода https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/):
+-----------------------------------------------------------------------------------------------------------------------------------------
+  ~ Добавить TS в проект:
+    <папка проекта> npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+  ~ Сгенерировать файл tsconfig.json:
+    > npx tsc --init
+  ~ В файле tsconfig.json добавить ключ:
+  {
+    "compilerOptions": {
+      "jsx": "react",
+    ...
+  }
+  ~ переименовать *.js в *.tsx (например, src/index.js -> src/index.tsx, src/App.js -> src/App.tsx);
+  ~ проверить наличие расширений/плагинов в редакторе кода для работы с TypeScript;
+  ~ временно установите комментарий // @ts-ignore перед конфликтными import;
+  ~ добавить типы для используемых внешних пакетов-зависимостей. Например, для пакета styled-components установить его TS-типы (см. https://styled-components.com/docs/api#typescript):
+    > npm install --save @types/styled-components
+  ~ перестартовать сервер;
+  ~ выполнить аннотирование (явное указание) типов аргументов функций и props для компонент пока не исчезнут ошибки по типам;
+
+  6.1) Новый проект сразу на TypeScript (с помощью create-react-app, см. https://create-react-app.dev/docs/adding-typescript):
+   > npx create-react-app name-of-app --template typescript
+
+  6.2) Новый React-проект с использованием Next.js+TypeScript:
+   > npx create-next-app -e with-typescript
+
+Шпаргалка по TypeScript в React-проекте: https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
+Как переустановить все пакеты в случае конфликтов: https://bobbyhadz.com/blog/react-module-not-found-cant-resolve-styled-components#:~:text=To%20solve%20the%20error%20%22Module,and%20restart%20your%20development%20server.
