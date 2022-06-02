@@ -1,11 +1,13 @@
 Проект hacker-stories по книге The Road to React by Robin Wieruch (https://www.roadtoreact.com/)
-
 0) Создание проекта:
  > npx create-react-app 00.road2react --use-npm &&
-   cd 00.road2react &&
-   npm start
+   cd 00.road2react && npm start
 
-1) Приводим scr/App.js к виду "Hello World".
+1) Установить пакеты зависимостей проекта:
+ > npm install --save axios styled-components lodash
+ > npm install react-test-renderer --save-dev
+
+2) Приводим scr/App.js к виду "Hello World".
 function App() {
   return (
     <div>
@@ -13,23 +15,22 @@ function App() {
     </div>
   );
 }
-
 export default App;
 
-2) Фиксим изменения
+3) Фиксим изменения
  > git add .
  > git commit -am "Initial setup"
 
-3) Создать репозиторий в личном Github-аккаунте:
+4) Создать репозиторий в личном Github-аккаунте:
  > https://github.com/OLEGB2012/road2react.git
 
-4) Связь локальный и удаленный репы:
+5) Связь локальный и удаленный репы:
  > git remote add origin https://github.com/OLEGB2012/road2react.git
 
-5) Публикуем начальный коммит:
+6) Публикуем начальный коммит:
  > git push -u origin master
 
-6) Перевод существующего проекта на TypeScript (см. пример перехода https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/):
+7) Перевод существующего проекта на TypeScript (см. пример перехода https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/):
 -----------------------------------------------------------------------------------------------------------------------------------------
   ~ Добавить TS в проект:
     <папка проекта> npm install --save typescript @types/node @types/react @types/react-dom @types/jest
@@ -49,10 +50,10 @@ export default App;
   ~ перестартовать сервер;
   ~ выполнить аннотирование (явное указание) типов аргументов функций и props для компонент пока не исчезнут ошибки по типам;
 
-  6.1) Новый проект сразу на TypeScript (с помощью create-react-app, см. https://create-react-app.dev/docs/adding-typescript):
+  7.1) Новый проект сразу на TypeScript (с помощью create-react-app, см. https://create-react-app.dev/docs/adding-typescript):
    > npx create-react-app name-of-app --template typescript
 
-  6.2) Новый React-проект с использованием Next.js+TypeScript:
+  7.2) Новый React-проект с использованием Next.js+TypeScript:
    > npx create-next-app -e with-typescript
 
 Шпаргалка по TypeScript в React-проекте: https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
